@@ -2,30 +2,29 @@ using System;
 
 class Program
 {
-    static void Main(string[] args)
+    static bool EstePalindrom(int n)
     {
-        string n = Console.ReadLine();
-        
-        if (IsPalindrome(n))
+        if (n < 0) return false;
+        int original = n;
+        int invers = 0;
+        while (n > 0)
         {
-            Console.WriteLine($"{n} este palindrom.");
+            int cif = n % 10;
+            invers = invers * 10 + cif;
+            n /= 10;
+        }
+        return original == invers;
+    }
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        if (EstePalindrom(n))
+        {
+            Console.WriteLine($"{n} este un palindrom.");
         }
         else
         {
-            Console.WriteLine($"{n} nu este palindrom.");
+            Console.WriteLine($"{n} nu este un palindrom.");
         }
-    }
-
-    static bool IsPalindrome(string nr)
-    {
-        int length = number.Length;
-        for (int i = 0; i < length / 2; i++)
-        {
-            if (nr[i] != nr[length - i - 1])
-            {
-                return false;
-            }
-        }
-        return true;
     }
 }
